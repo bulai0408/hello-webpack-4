@@ -11,8 +11,8 @@ class App extends React.Component {
       <Router>
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/bird" component={Bird} />
+            <Route exact={true} path="/" component={Home} />
+            <Route exact={true} path="/bird" component={Bird} />
           </Switch>
         </Suspense>
       </Router>
