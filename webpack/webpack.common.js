@@ -40,7 +40,6 @@ module.exports = {
           loader: "ts-loader",
           options: {
             transpileOnly: true,
-            experimentalWatchApi: true,
             getCustomTransformers: () => ({
               before: [
                 tsImportPluginFactory({
@@ -80,6 +79,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      //html模板生成
       title: "index",
       filename: "index.html",
       template: "public/index.html",
@@ -89,8 +89,12 @@ module.exports = {
         removeAttributeQuotes: true
       }
     }),
-    new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: "disabled", // 不启动展示打包报告的http服务器
+      generateStatsFile: false // 是否生成stats.json文件,平常关闭，需要查看时开启
+    }),
     new MomentLocalesPlugin({
+      //减小moment.js包体积，只保留zh-cn部分
       localesToKeep: ["zh-cn"]
     })
   ]

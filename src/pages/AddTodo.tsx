@@ -17,8 +17,6 @@ const AddTodo = ({ dispatch }: { dispatch: any }) => {
     setText("");
   };
 
-  console.log(555);
-
   const addTodoAsyncCb = () => {
     dispatch(addTodoAsync(text));
     setText("");

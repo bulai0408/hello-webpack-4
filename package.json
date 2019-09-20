@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dashboard -- npx webpack-dev-server",
+    "dev": "webpack-dashboard -- npx webpack-dev-server --open",
     "prod": "NODE_ENV=production npx webpack",
-    "lint": "tslint --project ./tsconfig.json && stylelint \"./src/**/*.scss\""
+    "lint": "tslint --project ./tsconfig.json && stylelint \"./src/**/*.scss\"",
+    "analyz": "webpack-bundle-analyzer --port 8888 ./dist/stats.json"
   },
   "husky": {
     "hooks": {
@@ -48,7 +49,6 @@
     "@types/redux-logger": "^3.0.7",
     "@types/styled-components": "^4.1.19",
     "babel-loader": "^8.0.6",
-    "babel-plugin-import": "^1.12.1",
     "babel-plugin-styled-components": "^1.10.6",
     "cache-loader": "^4.1.0",
     "clean-webpack-plugin": "^3.0.0",
