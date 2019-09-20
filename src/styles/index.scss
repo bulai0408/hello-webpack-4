@@ -1,0 +1,14 @@
+@mixin center {
+  color: red;
+}
+
+body {
+  p {
+    color: green;
+  }
+
+  .image {
+    height: 300px;
+    background: url("../assets/yzby.jpg") no-repeat;
+  }
+}
