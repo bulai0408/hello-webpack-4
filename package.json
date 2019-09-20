@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "webpack-dashboard -- npx webpack-dev-server",
     "prod": "NODE_ENV=production npx webpack",
-    "lint": "tslint --type-check --project ./tsconfig.json && stylelint \"./src/**/*.scss\""
+    "lint": "tslint --project ./tsconfig.json && stylelint \"./src/**/*.scss\""
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm lint"
+      "pre-commit": "npm run lint"
     }
   },
   "keywords": [],
@@ -73,6 +73,7 @@
     "ts-loader": "^6.1.0",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.1.0",
     "typescript": "^3.6.3",
     "webpack": "^4.39.3",
