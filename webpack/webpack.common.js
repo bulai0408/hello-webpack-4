@@ -23,7 +23,8 @@ module.exports = {
         __dirname,
         "..",
         "antdIcon.js"
-      )
+      ),
+      "react-dom": "@hot-loader/react-dom"
     },
     plugins: [
       new TsconfigPathsPlugin({

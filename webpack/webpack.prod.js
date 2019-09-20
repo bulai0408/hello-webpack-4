@@ -91,5 +91,11 @@ module.exports = merge(common, {
       }),
       new OptimizeCSSAssetsPlugin({})
     ]
+  },
+  performance: {
+    maxEntrypointSize: 2000000,
+    assetFilter: function assetFilter(assetFilename) {
+      return !/\.js$/.test(assetFilename);
+    }
   }
 });
