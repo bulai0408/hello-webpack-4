@@ -1,16 +1,16 @@
-const merge = require("webpack-merge");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const WebpackBar = require("webpackbar");
+const merge = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const WebpackBar = require('webpackbar');
 
-const common = require("./webpack.common");
-const theme = require("../theme");
+const common = require('./webpack.common');
+const theme = require('../theme');
 
 module.exports = merge(common, {
-  mode: "production",
-  devtool: "eval",
+  mode: 'production',
+  devtool: 'cheap-module-source-map',
   module: {
     rules: [
       {
@@ -20,10 +20,10 @@ module.exports = merge(common, {
             loader: MiniCssExtractPlugin.loader,
             options: {
               //Specifies a custom public path for the target file(s).
-              publicPath: "../"
+              publicPath: '../'
             }
           },
-          "css-loader"
+          'css-loader'
         ]
       },
       {
@@ -33,11 +33,11 @@ module.exports = merge(common, {
             loader: MiniCssExtractPlugin.loader,
             options: {
               //Specifies a custom public path for the target file(s).
-              publicPath: "../"
+              publicPath: '../'
             }
           },
-          "css-loader",
-          "sass-loader"
+          'css-loader',
+          'sass-loader'
         ]
       },
       {
@@ -47,12 +47,12 @@ module.exports = merge(common, {
             loader: MiniCssExtractPlugin.loader,
             options: {
               //Specifies a custom public path for the target file(s).
-              publicPath: "../"
+              publicPath: '../'
             }
           },
-          "css-loader",
+          'css-loader',
           {
-            loader: "less-loader",
+            loader: 'less-loader',
             options: {
               javascriptEnabled: true,
               modifyVars: theme
@@ -64,23 +64,23 @@ module.exports = merge(common, {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/[name].[hash].css",
-      chunkFilename: "css/[id].[hash].css"
+      filename: 'css/[name].[hash].css',
+      chunkFilename: 'css/[id].[hash].css'
     }),
     new CleanWebpackPlugin(),
     new WebpackBar()
   ],
   optimization: {
     runtimeChunk: {
-      name: "manifest"
+      name: 'manifest'
     },
     splitChunks: {
       cacheGroups: {
         default: false,
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: "vendor",
-          chunks: "all"
+          name: 'vendor',
+          chunks: 'all'
         }
       }
     },
