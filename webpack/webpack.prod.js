@@ -76,7 +76,7 @@ module.exports = merge(common, {
     },
     splitChunks: {
       cacheGroups: {
-        defaule: false,
+        default: false,
         commons: {
           test: /[\\/]node_modules[\\/]/,
           name: "vendor",
