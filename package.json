@@ -24,6 +24,7 @@
     "@babel/runtime-corejs2": "^7.6.0",
     "@hot-loader/react-dom": "^16.9.0",
     "antd": "^3.23.3",
+    "antd-mobile": "^2.3.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-hot-loader": "^4.12.13",

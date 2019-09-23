@@ -38,9 +38,11 @@ module.exports = {
             getCustomTransformers: () => ({
               before: [
                 tsImportPluginFactory({
-                  libraryName: 'antd',
-                  libraryDirectory: 'lib',
-                  style: true
+                  // libraryName: 'antd',
+                  // libraryDirectory: 'lib',
+                  // style: true
+                  libraryName: 'antd-mobile',
+                  style: 'css'
                 })
               ]
             })
