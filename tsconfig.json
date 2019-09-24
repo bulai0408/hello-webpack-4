@@ -14,6 +14,12 @@
       "@components/*": [
         "src/components/*"
       ],
+      "@api/*": [
+        "src/api/*"
+      ],
+      "@baseUI/*": [
+        "src/baseUI/*"
+      ],
       "@pages/*": [
         "src/pages/*"
       ],
@@ -26,8 +32,8 @@
       "@utils/*": [
         "src/utils/*"
       ],
-      "@redux/*": [
-        "src/redux/*"
+      "@store/*": [
+        "src/store/*"
       ]
     }
   }

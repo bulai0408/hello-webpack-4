@@ -1,10 +1,10 @@
-import { ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO } from "@redux/constants";
+import { ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO } from '../constants';
 
 let nextTodoId = 0;
 export const addTodo = (text: string) => ({
   type: ADD_TODO,
   id: nextTodoId++,
-  text,
+  text
 });
 
 export const addTodoAsync = (text: string) => (dispatch: any) => {
@@ -15,10 +15,10 @@ export const addTodoAsync = (text: string) => (dispatch: any) => {
 
 export const setVisibilityFilter = (filter: any) => ({
   type: SET_VISIBILITY_FILTER,
-  filter,
+  filter
 });
 
 export const toggleTodo = (id: number) => ({
   type: TOGGLE_TODO,
-  id,
+  id
 });

@@ -1,20 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-import AddTodo from './AddTodo';
-import VisibleTodoList from './VisibleTodoList';
-import Footer from '@components/Footer';
-
-import SearchBar from '@components/SearchBar';
-
-const Home = () => {
-  return (
-    <>
-      {/* <AddTodo />
-      <VisibleTodoList />
-      <Footer /> */}
-      <SearchBar />
-    </>
-  );
-};
+const Home = memo(() => {
+  return <div>Home</div>;
+});
 
 export default Home;

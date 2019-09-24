@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO } from "@redux/constants";
+import { ADD_TODO, TOGGLE_TODO } from 'src/store/constants';
 
 interface IInitialTodo {
   id: number;
