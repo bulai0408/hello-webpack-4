@@ -108,13 +108,13 @@ module.exports = {
       //减小moment.js包体积，只保留zh-cn部分
       localesToKeep: ['zh-cn']
     })
-  ],
-  externals: {
-    // key是我们 import 的包名，value 是CDN为我们提供的全局变量名
-    // 所以最后 webpack 会把一个静态资源编译成：module.export.react = window.React
-    react: 'React',
-    'react-dom': 'ReactDOM',
-    redux: 'Redux',
-    'react-router-dom': 'ReactRouterDOM'
-  }
+  ]
+  // externals: {
+  //   // key是我们 import 的包名，value 是CDN为我们提供的全局变量名
+  //   // 所以最后 webpack 会把一个静态资源编译成：module.export.react = window.React
+  //   react: 'React',
+  //   'react-dom': 'ReactDOM',
+  //   redux: 'Redux',
+  //   'react-router-dom': 'ReactRouterDOM'
+  // }
 };

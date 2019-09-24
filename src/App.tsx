@@ -1,10 +1,12 @@
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router, Switch } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 
+import '@styles/index.less';
 import { GlobalStyle } from './style';
 import { IconStyle } from './assets/iconfont/iconfont';
-import renderRouter from './RouterConfig';
+import routes from './routes';
 
 class App extends React.Component {
   render() {
@@ -12,7 +14,7 @@ class App extends React.Component {
       <Router>
         <GlobalStyle />
         <IconStyle />
-        {renderRouter()}
+        {renderRoutes(routes)}
       </Router>
     );
   }
