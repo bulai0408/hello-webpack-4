@@ -68,6 +68,7 @@ module.exports = merge(common, {
     new DashboardPlugin()
   ],
   devServer: {
+    host: '0.0.0.0',
     contentBase: path.join(__dirname, 'dist'),
     compress: true, // 一切服务都启用 gzip 压缩
     hot: true,

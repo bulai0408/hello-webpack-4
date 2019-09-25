@@ -1,29 +1,36 @@
-import React, { FC } from 'react';
+import React, { FC, useRef, useEffect } from 'react';
+import BScroll from 'better-scroll';
 
 import { IRecommendRecord } from '@types';
-import { RecommendTitle, RecommentContent } from './style';
-import { formatCount } from '@utils';
+import { RecommendTitle, RecommendContent } from './style';
+
+import SongListCard from '@baseUI/songListCard';
 
 interface IProps {
   recommendList: IRecommendRecord[];
 }
 
 const RecommendList: FC<IProps> = ({ recommendList }) => {
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const myScroll = new BScroll(scrollRef.current!, {});
+    console.log(myScroll);
+    return () => {
+      console.log('didmount');
+    };
+  }, []);
+
   return (
     <div>
       <RecommendTitle>推荐歌单</RecommendTitle>
-      <RecommentContent>
-        {recommendList.map((i, index) => (
-          <div className='recommend_item' key={i.name + index}>
-            <div className='recommend_listener'>
-              <i className='iconfont play'>&#xe885;</i>
-              {formatCount(i.playCount)}
-            </div>
-            <img src={i.picUrl} className='recommend_img' alt='歌单' />
-            <div className='recommend_text'>{i.name}</div>
-          </div>
-        ))}
-      </RecommentContent>
+      <div ref={scrollRef} className='wrapper'>
+        <RecommendContent className='content'>
+          {recommendList.map((i, index) => (
+            <SongListCard key={i.name + index} {...i} />
+          ))}
+        </RecommendContent>
+      </div>
     </div>
   );
 };

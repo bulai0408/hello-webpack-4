@@ -1,5 +1,8 @@
 {
   "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": ["node_modules"]
+  },
   "rules": {
     "arrow-parens": false,
     "arrow-return-shorthand": [false],
