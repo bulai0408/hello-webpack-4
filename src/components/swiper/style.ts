@@ -7,7 +7,6 @@ export const SliderContainer = styled.div`
   width: 100%;
   height: 100%;
   margin: auto;
-  background: white;
   &::after {
     content: '';
     width: 100%;
@@ -20,7 +19,7 @@ export const SliderContainer = styled.div`
   }
   .swiper-container {
     position: relative;
-    width: 98%;
+    width: 96%;
     height: 160px;
     overflow: hidden;
     margin: auto;
