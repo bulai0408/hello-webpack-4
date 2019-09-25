@@ -21,8 +21,7 @@ export const TabBar = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 41px;
-  transform: translate3d(0, -1px, 0);
+  height: 40px;
 
   a {
     height: 100%;
