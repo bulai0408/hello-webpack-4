@@ -72,6 +72,7 @@ const ScrollView: FC<IProps> = forwardRef((props, ref: any) => {
   /** 每次更新刷新scroll */
   useEffect(() => {
     if (refresh && myBScroll) {
+      console.log(666);
       myBScroll.refresh();
     }
   });
@@ -95,7 +96,8 @@ const ScrollView: FC<IProps> = forwardRef((props, ref: any) => {
       return;
     }
     myBScroll.on('scrollEnd', () => {
-      if (myBScroll.y < myBScroll.maxScrollY + 60) {
+      console.log(myBScroll.y, myBScroll.maxScrollY);
+      if (myBScroll.y < myBScroll.maxScrollY + 100) {
         pullUp();
       }
     });

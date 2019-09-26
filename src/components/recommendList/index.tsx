@@ -1,12 +1,12 @@
-import React, { FC, useRef, useEffect } from 'react';
+import React, { FC } from 'react';
 
-import { IRecommendRecord } from '@types';
+import { IRecommendItem } from '@types';
 import { RecommendTitle, RecommendContent, ScrollBackgroundModal } from './style';
 
 import SongListCard from '@baseUI/songListCard';
 
 interface IProps {
-  recommendList: IRecommendRecord[];
+  recommendList: IRecommendItem[];
 }
 
 const RecommendList: FC<IProps> = ({ recommendList }) => {
@@ -15,8 +15,8 @@ const RecommendList: FC<IProps> = ({ recommendList }) => {
       <ScrollBackgroundModal />
       <RecommendTitle>推荐歌单</RecommendTitle>
       <RecommendContent>
-        {recommendList.map((i, index) => (
-          <SongListCard key={i.name + index} {...i} />
+        {recommendList.map(i => (
+          <SongListCard key={i.picUrl} {...i} />
         ))}
       </RecommendContent>
     </div>

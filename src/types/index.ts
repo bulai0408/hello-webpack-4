@@ -1,8 +1,1 @@
-export interface IRecommendRecord {
-  id: number;
-  picUrl: string;
-  playCount: number;
-  name: string;
-}
-
 export * from './api_banner';

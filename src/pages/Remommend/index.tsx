@@ -1,8 +1,9 @@
 import React, { memo, FC, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { forceCheck } from 'react-lazyload';
 
 import { SwiperContainer } from './style';
-import { IBannerItem } from '@types';
+import { IBannerItem, IRecommendItem } from '@types';
 import * as actions from '@store/actions';
 
 import Swiper from '@components/swiper';
@@ -11,48 +12,34 @@ import ScrollView from '@baseUI/scrollView';
 
 interface IProps {
   bannerList: IBannerItem[];
+  recommendList: IRecommendItem[];
   getBanner: () => void;
+  getRecommend: () => void;
 }
 
 const Recommend: FC<IProps> = memo(props => {
-  const { getBanner } = props;
-
-  // mock数据
-  const bannerList = [1, 2, 3, 4].map(item => {
-    return { imageUrl: 'http://p1.music.126.net/ZYLJ2oZn74yUz5x8NBGkVA==/109951164331219056.jpg' };
-  });
-
-  const recommendList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => {
-    return {
-      id: 1,
-      picUrl: 'https://p1.music.126.net/fhmefjUfMD-8qtj3JKeHbA==/18999560928537533.jpg',
-      playCount: 17178765,
-      name: '朴树、许巍、李健、郑钧、老狼、赵雷'
-    };
-  });
+  const { getBanner, getRecommend, bannerList, recommendList } = props;
 
   useEffect(() => {
     getBanner();
+    getRecommend();
   }, []);
 
   return (
     <SwiperContainer>
       <ScrollView
-        className='list'
         direction='vertical'
         click={true}
         bounceTop={true}
         bounceBottom={true}
         refresh={true}
-        onScroll={() => {
-          console.log('onScroll');
-        }}
         pullDown={() => {
           console.log('pulldown');
         }}
         pullUp={() => {
           console.log('pullUp');
         }}
+        onScroll={forceCheck}
       >
         <div>
           <Swiper bannerList={bannerList} />
@@ -64,13 +51,16 @@ const Recommend: FC<IProps> = memo(props => {
 });
 
 const mapStateToProps = (state: any) => {
+  console.log(state);
   return {
-    bannerList: state.getIn(['recommend', 'bannerList'])
+    bannerList: state.recommend.bannerList,
+    recommendList: state.recommend.recommendList
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => ({
-  getBanner: () => dispatch(actions.getBannerList())
+  getBanner: () => dispatch(actions.getBannerList()),
+  getRecommend: () => dispatch(actions.getRecommendList())
 });
 
 export default connect(

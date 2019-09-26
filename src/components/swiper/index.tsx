@@ -3,14 +3,15 @@ import 'swiper/dist/css/swiper.min.css';
 import Swiper from 'swiper/dist/js/swiper.js';
 
 import { SliderContainer } from './style';
+import { IBannerItem } from '@types';
 
 interface IProps {
-  bannerList: Array<{ imageUrl: string }>;
+  bannerList: IBannerItem[];
 }
 
 const Slider: FC<IProps> = ({ bannerList }) => {
   const [sliderSwiper, setSliderSwiper] = useState(null);
-
+  console.log(bannerList);
   useEffect(() => {
     if (bannerList.length && !sliderSwiper) {
       const mySwiper = new Swiper('.swiper-container', {
@@ -29,9 +30,9 @@ const Slider: FC<IProps> = ({ bannerList }) => {
     <SliderContainer>
       <div className='swiper-container'>
         <div className='swiper-wrapper'>
-          {bannerList.map((i, index) => (
-            <div className='swiper-slide' key={`${i.imageUrl}${index}`}>
-              <img src={i.imageUrl} width='100%' height='100%' alt='推荐' />
+          {bannerList.map(i => (
+            <div className='swiper-slide' key={`${i.pic}`}>
+              <img src={i.pic} width='100%' height='100%' alt='推荐' />
             </div>
           ))}
         </div>

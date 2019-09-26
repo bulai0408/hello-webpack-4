@@ -43,4 +43,25 @@ export interface IBannerItem {
 
 export interface IBannerResult {
   banners: IBannerItem[];
+  code: number;
+}
+
+export interface IRecommendItem {
+  id: number;
+  type: number;
+  name: string;
+  copywriter: string;
+  picUrl: string;
+  canDislike: boolean;
+  playCount: number;
+  trackCount: number;
+  highQuality: boolean;
+  alg: string;
+}
+
+export interface IRecommendResult {
+  hasTaste: boolean;
+  code: number;
+  category: number;
+  result: IRecommendItem[];
 }

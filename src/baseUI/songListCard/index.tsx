@@ -2,14 +2,9 @@ import React, { FC } from 'react';
 
 import { formatCount } from '@utils';
 import { CardItem } from './style';
+import { IRecommendItem } from '@types';
 
-interface IProps {
-  name: string;
-  picUrl: string;
-  playCount: number;
-}
-
-const SongListCard: FC<IProps> = ({ name, picUrl, playCount }) => {
+const SongListCard: FC<IRecommendItem> = ({ name, picUrl, playCount }) => {
   return (
     <CardItem>
       <div className='recommend_listener'>
