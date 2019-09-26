@@ -16,8 +16,8 @@
       "@components/*": [
         "src/components/*"
       ],
-      "@api/*": [
-        "src/api/*"
+      "@api": [
+        "src/api"
       ],
       "@baseUI/*": [
         "src/baseUI/*"

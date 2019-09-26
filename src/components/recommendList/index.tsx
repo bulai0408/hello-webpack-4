@@ -1,8 +1,7 @@
 import React, { FC, useRef, useEffect } from 'react';
-import BScroll from 'better-scroll';
 
 import { IRecommendRecord } from '@types';
-import { RecommendTitle, RecommendContent } from './style';
+import { RecommendTitle, RecommendContent, ScrollBackgroundModal } from './style';
 
 import SongListCard from '@baseUI/songListCard';
 
@@ -11,26 +10,15 @@ interface IProps {
 }
 
 const RecommendList: FC<IProps> = ({ recommendList }) => {
-  const scrollRef = useRef(null);
-
-  useEffect(() => {
-    const myScroll = new BScroll(scrollRef.current!, {});
-    console.log(myScroll);
-    return () => {
-      console.log('didmount');
-    };
-  }, []);
-
   return (
     <div>
+      <ScrollBackgroundModal />
       <RecommendTitle>推荐歌单</RecommendTitle>
-      <div ref={scrollRef} className='wrapper'>
-        <RecommendContent className='content'>
-          {recommendList.map((i, index) => (
-            <SongListCard key={i.name + index} {...i} />
-          ))}
-        </RecommendContent>
-      </div>
+      <RecommendContent>
+        {recommendList.map((i, index) => (
+          <SongListCard key={i.name + index} {...i} />
+        ))}
+      </RecommendContent>
     </div>
   );
 };

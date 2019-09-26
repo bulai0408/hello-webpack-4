@@ -1,10 +1,22 @@
-import React, { memo } from 'react';
+import React, { memo, FC, useEffect } from 'react';
+import { connect } from 'react-redux';
+
+import { SwiperContainer } from './style';
+import { IBannerItem } from '@types';
+import * as actions from '@store/actions';
 
 import Swiper from '@components/swiper';
 import RecommendList from '@components/recommendList';
-import { SwiperContainer } from './style';
+import ScrollView from '@baseUI/scrollView';
 
-const Recommend = memo(() => {
+interface IProps {
+  bannerList: IBannerItem[];
+  getBanner: () => void;
+}
+
+const Recommend: FC<IProps> = memo(props => {
+  const { getBanner } = props;
+
   // mock数据
   const bannerList = [1, 2, 3, 4].map(item => {
     return { imageUrl: 'http://p1.music.126.net/ZYLJ2oZn74yUz5x8NBGkVA==/109951164331219056.jpg' };
@@ -19,14 +31,49 @@ const Recommend = memo(() => {
     };
   });
 
+  useEffect(() => {
+    getBanner();
+  }, []);
+
   return (
-    <div>
-      <SwiperContainer>
-        <Swiper bannerList={bannerList} />
-        <RecommendList recommendList={recommendList} />
-      </SwiperContainer>
-    </div>
+    <SwiperContainer>
+      <ScrollView
+        className='list'
+        direction='vertical'
+        click={true}
+        bounceTop={true}
+        bounceBottom={true}
+        refresh={true}
+        onScroll={() => {
+          console.log('onScroll');
+        }}
+        pullDown={() => {
+          console.log('pulldown');
+        }}
+        pullUp={() => {
+          console.log('pullUp');
+        }}
+      >
+        <div>
+          <Swiper bannerList={bannerList} />
+          <RecommendList recommendList={recommendList} />
+        </div>
+      </ScrollView>
+    </SwiperContainer>
   );
 });
 
-export default Recommend;
+const mapStateToProps = (state: any) => {
+  return {
+    bannerList: state.getIn(['recommend', 'bannerList'])
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => ({
+  getBanner: () => dispatch(actions.getBannerList())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Recommend);

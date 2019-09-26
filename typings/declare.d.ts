@@ -22,3 +22,8 @@ declare module '*.js' {
   const js: any;
   export default js;
 }
+
+declare module 'MyTypes' {
+  export type RootState = ReturnType<typeof import('@store/reducers').default>;
+  export type RootAction = ReturnType<typeof import('@store/actions').default>;
+}

@@ -4,3 +4,5 @@ export interface IRecommendRecord {
   playCount: number;
   name: string;
 }
+
+export * from './api_banner';
