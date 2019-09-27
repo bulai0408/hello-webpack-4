@@ -33,12 +33,8 @@ const Recommend: FC<IProps> = memo(props => {
         bounceTop={true}
         bounceBottom={true}
         refresh={true}
-        pullDown={() => {
-          console.log('pulldown');
-        }}
-        pullUp={() => {
-          console.log('pullUp');
-        }}
+        pullDown={() => {}}
+        pullUp={() => {}}
         onScroll={forceCheck}
       >
         <div>
@@ -51,7 +47,6 @@ const Recommend: FC<IProps> = memo(props => {
 });
 
 const mapStateToProps = (state: any) => {
-  console.log(state);
   return {
     bannerList: state.recommend.bannerList,
     recommendList: state.recommend.recommendList

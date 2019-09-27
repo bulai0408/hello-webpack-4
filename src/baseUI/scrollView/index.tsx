@@ -1,5 +1,5 @@
 import React, { useEffect, useState, FC, useImperativeHandle, useRef, forwardRef } from 'react';
-import BScroll from '@better-scroll/core';
+import BScroll from 'better-scroll';
 import styled from 'styled-components';
 
 interface IProps {
@@ -11,7 +11,6 @@ interface IProps {
   pullDown: () => void; // 下拉加载逻辑
   bounceTop: boolean; // 是否支持向上吸顶
   bounceBottom: boolean; // 是否支持向下吸底
-  className: string;
 }
 
 const ScrollContainer = styled.div`
@@ -72,7 +71,6 @@ const ScrollView: FC<IProps> = forwardRef((props, ref: any) => {
   /** 每次更新刷新scroll */
   useEffect(() => {
     if (refresh && myBScroll) {
-      console.log(666);
       myBScroll.refresh();
     }
   });
@@ -96,7 +94,7 @@ const ScrollView: FC<IProps> = forwardRef((props, ref: any) => {
       return;
     }
     myBScroll.on('scrollEnd', () => {
-      console.log(myBScroll.y, myBScroll.maxScrollY);
+      console.log('end');
       if (myBScroll.y < myBScroll.maxScrollY + 100) {
         pullUp();
       }
@@ -112,6 +110,7 @@ const ScrollView: FC<IProps> = forwardRef((props, ref: any) => {
       return;
     }
     myBScroll.on('touchEnd', ({ y }: any) => {
+      console.log('touchEnd');
       if (y > 50) {
         pullDown();
       }

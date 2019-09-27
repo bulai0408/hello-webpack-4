@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import global from '@assets/global-style';
 
-export const RecommendTitle = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-  padding: 20px 0 20px 10px;
+export const RecommendContainer = styled.div`
+  max-width: 100%;
+  .title {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 20px 0 20px 10px;
+  }
 `;
 
 export const RecommendContent = styled.div`
@@ -21,5 +24,5 @@ export const ScrollBackgroundModal = styled.div`
   width: 100%;
   height: 400px;
   top: -300px;
-  z-index: -1;
+  z-index: -9999;
 `;
