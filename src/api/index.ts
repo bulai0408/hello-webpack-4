@@ -9,5 +9,11 @@ export const getBanner = (params: IBannerParams) => {
 };
 
 export const getRecommend = () => {
-  return axios.get('personalized?limit=30');
+  return axios.get('/personalized?limit=30');
+};
+
+export const getSearchFetch = (keywords: string) => {
+  return axios.get('/search', {
+    params: { keywords }
+  });
 };

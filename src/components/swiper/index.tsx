@@ -11,7 +11,6 @@ interface IProps {
 
 const Slider: FC<IProps> = ({ bannerList }) => {
   const [sliderSwiper, setSliderSwiper] = useState(null);
-  console.log(bannerList);
   useEffect(() => {
     if (bannerList.length && !sliderSwiper) {
       const mySwiper = new Swiper('.swiper-container', {

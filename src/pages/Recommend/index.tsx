@@ -21,8 +21,12 @@ const Recommend: FC<IProps> = memo(props => {
   const { getBanner, getRecommend, bannerList, recommendList } = props;
 
   useEffect(() => {
-    getBanner();
-    getRecommend();
+    if (!(bannerList.length > 0)) {
+      getBanner();
+    }
+    if (!(recommendList.length > 0)) {
+      getRecommend();
+    }
   }, []);
 
   return (

@@ -1,8 +1,8 @@
 import * as actions from '../constants';
-import { Dispatch } from 'redux';
 
 import { getBanner, getRecommend } from '@api';
 import { IBannerItem, IRecommendItem } from '@types';
+import { changeLoading } from './loading';
 
 export const changeBannerList = (data: IBannerItem[]) => ({
   type: actions.CHANGE_BANNER,
@@ -14,16 +14,21 @@ export const changeRecommendList = (data: IRecommendItem[]) => ({
   data
 });
 
-export const getBannerList = () => async (dispatch: Dispatch) => {
+export const getBannerList = () => async (dispatch: any) => {
   try {
     const res: any = await getBanner({ type: 2 });
     dispatch(changeBannerList(res.banners));
-  } catch (error) {}
+    dispatch(changeLoading(false));
+  } catch (error) {
+    console.log('出了点问题...');
+  }
 };
 
-export const getRecommendList = () => async (dispatch: Dispatch) => {
+export const getRecommendList = () => async (dispatch: any) => {
   try {
     const res: any = await getRecommend();
     dispatch(changeRecommendList(res.result));
-  } catch (error) {}
+  } catch (error) {
+    console.log('出了点问题...');
+  }
 };

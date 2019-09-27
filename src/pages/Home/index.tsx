@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
+import { withRouter } from 'react-router';
 
 import { TopBar, TabBar, TabItem } from './style';
 
@@ -22,13 +22,18 @@ const tabConfig = [
   }
 ];
 
-const Home = memo(({ route }: any) => {
+const Home = memo(({ children, history }: any) => {
+  const changeRouteToSearch = () => {
+    history.push('/search');
+  };
   return (
     <div>
       <TopBar>
         <span className='iconfont menu'>&#xe65c;</span>
         <span className='title'>汪易云音乐</span>
-        <span className='iconfont search'>&#xe62b;</span>
+        <span className='iconfont search' onClick={changeRouteToSearch}>
+          &#xe62b;
+        </span>
       </TopBar>
       <TabBar>
         {tabConfig.map(i => (
@@ -39,9 +44,9 @@ const Home = memo(({ route }: any) => {
           </NavLink>
         ))}
       </TabBar>
-      {renderRoutes(route.routes)}
+      {children}
     </div>
   );
 });
 
-export default Home;
+export default withRouter(Home);
